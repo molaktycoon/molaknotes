@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:molaknotes/views/login_view.dart';
 import 'package:molaknotes/views/register_view.dart';
+import 'package:molaknotes/views/verified_email_view.dart';
 
 import 'firebase_options.dart';
 
@@ -41,8 +43,17 @@ class _HomepageState extends State<Homepage> {
            builder: (context,snapshot) {
              switch (snapshot.connectionState){
                case ConnectionState.done:
-               return const Loginview();
-              //  final user = FirebaseAuth.instance.currentUser;
+               final user = FirebaseAuth.instance.currentUser;
+              if(user != null){
+                if(user.emailVerified){
+                  print('Email is Verified');
+                }else{
+                  return const EmailVericationView();
+                }
+                }else {
+                  return const Loginview();
+              }
+              return const Text('Done');
               //  if(user?.emailVerified ?? false){
               //    return const Text('Welcome, All DONE');
               //   // print('You are a verified user');

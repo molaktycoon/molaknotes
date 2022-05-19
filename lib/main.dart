@@ -1,7 +1,7 @@
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:molaknotes/views/login_view.dart';
+import 'package:molaknotes/views/register_view.dart';
 
 import 'firebase_options.dart';
 
@@ -16,6 +16,10 @@ void main() {
         primarySwatch: Colors.green,
       ),
       home: const Homepage(),
+      routes: {
+        '/login/': (context) => const Loginview(),
+        '/register/':(context) => const RegisterView(),
+      },
     ),  );
   
 }
@@ -30,30 +34,32 @@ void main() {
 class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
-     return Scaffold(
-       appBar: AppBar(
-         title:const  Text('Home Page') ,
-         ),
-         body: FutureBuilder(
+     return FutureBuilder(
            future: Firebase.initializeApp(
             options: DefaultFirebaseOptions.currentPlatform,
            ),
            builder: (context,snapshot) {
              switch (snapshot.connectionState){
                case ConnectionState.done:
-               final user = FirebaseAuth.instance.currentUser;
-               if(user?.emailVerified ?? false){
-                 print('You are a verified user');
-               }else{
-                 print('You are not Verified');
-               }
-             return const Text('Welcome, All DONE');
+               return const Loginview();
+              //  final user = FirebaseAuth.instance.currentUser;
+              //  if(user?.emailVerified ?? false){
+              //    return const Text('Welcome, All DONE');
+              //   // print('You are a verified user');
+              //  }else{
+              //    return const EmailVericationView();
+              //   // print('You are not Verified');
+              // //  //Navigator.of(context).push(MaterialPageRoute(
+              // //builder:(context)=>const EmailVericationView())
+              // //  );
+              //  }
+               
              default:
-             return const Text('Loading....');
+             return const CircularProgressIndicator();
                  }
              
            },
-         ),
-    );
+         );
   }
 }
+

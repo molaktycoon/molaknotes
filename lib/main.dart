@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:molaknotes/views/login_view.dart';
 import 'package:molaknotes/views/register_view.dart';
 import 'package:molaknotes/views/verified_email_view.dart';
-import 'dart:developer' as devtools show log;
 import 'firebase_options.dart' ;
 
 
@@ -21,6 +20,7 @@ void main() {
       routes: {
         '/login/': (context) => const Loginview(),
         '/register/':(context) => const RegisterView(),
+        '/mynotes/':(context) => const MyNote(),
       },
     ),  
     );
@@ -86,7 +86,7 @@ class _MyNoteState extends State<MyNote> {
               final shouldlogout = await showLogOutDialog(context);
               if(shouldlogout){
                 await FirebaseAuth.instance.signOut();
-                Navigator.of(context).pushNamedAndRemoveUntil('/login/', (_) => false);
+                Navigator.of(context).pushNamedAndRemoveUntil('/login/', (_) => false,);
               }
                 
                 break;

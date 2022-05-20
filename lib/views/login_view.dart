@@ -3,6 +3,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:developer' as devtools show log;
 import 'package:flutter/material.dart';
+import 'package:molaknotes/constant/route.dart';
 
 
 class Loginview extends StatefulWidget {
@@ -77,7 +78,8 @@ class _LoginviewState extends State<Loginview> {
                              email: email, 
                              password: password,
                            );
-                           Navigator.of(context).pushNamedAndRemoveUntil('/mynotes/', (route) => false,);
+                           Navigator.of(context).pushNamedAndRemoveUntil(
+                             mynotesRoute, (route) => false,);
                            
                          } on FirebaseAuthException catch (e) {
                            if (e.code == 'user-not-found') {
@@ -94,7 +96,7 @@ class _LoginviewState extends State<Loginview> {
                        TextButton(
                          onPressed: () {
                            Navigator.of(context).pushNamedAndRemoveUntil(
-                             '/register/', (route) => false);
+                             registerRoute, (route) => false,);
                          },
                          child: const Text("Don't have account? Register here"),
                        )

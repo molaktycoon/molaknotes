@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:molaknotes/constant/route.dart';
 import 'package:molaknotes/views/login_view.dart';
 import 'package:molaknotes/views/register_view.dart';
 import 'package:molaknotes/views/verified_email_view.dart';
@@ -18,9 +19,9 @@ void main() {
       ),
       home: const Homepage(),
       routes: {
-        '/login/': (context) => const Loginview(),
-        '/register/':(context) => const RegisterView(),
-        '/mynotes/':(context) => const MyNote(),
+        loginRoute: (context) => const Loginview(),
+        registerRoute:(context) => const RegisterView(),
+        mynotesRoute:(context) => const MyNote(),
       },
     ),  
     );

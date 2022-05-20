@@ -90,7 +90,7 @@ class _RegisterViewState extends State<RegisterView> {
                         Navigator.of(context).pushNamedAndRemoveUntil
                         ('/login/', (route) => false);                          
                        },
-                       child: const Text('Registered, Login here'),
+                       child: const Text('Already Registered, Login here'),
                        )
                  ],
                ),

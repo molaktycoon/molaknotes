@@ -60,7 +60,14 @@ class _LoginviewState extends State<Loginview> {
                      ),
                    ),
                     TextButton(
-                        
+                      
+                        style: TextButton.styleFrom(
+                          
+                          padding: const EdgeInsets.all(8.0),
+                          primary: Colors.white,
+                          textStyle: const TextStyle(fontSize:20),
+                          backgroundColor: Colors.green
+                        ),
                        onPressed:() async{
                         
                          final email =_email.text;
@@ -80,20 +87,17 @@ class _LoginviewState extends State<Loginview> {
                              print('Wrong Password');
                              print(e.code);
                            }
-                           
-                          
                          }
-                        
                        },
                        
-                       child: const Text('Click Me'),      
+                       child: const Text('Continue'),      
                        ),
                        TextButton(
                          onPressed: () {
                            Navigator.of(context).pushNamedAndRemoveUntil(
                              '/register/', (route) => false);
                          },
-                         child: const Text('Not registered yet? Register here!'),
+                         child: const Text("Don't have account? Register here"),
                        )
                  ],
                ),

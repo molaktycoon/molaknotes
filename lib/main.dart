@@ -20,6 +20,7 @@ void main() {
         loginRoute: (context) => const Loginview(),
         registerRoute: (context) => const RegisterView(),
         mynotesRoute: (context) => const MyNote(),
+        verifiedEmailRoute:(context) => const EmailVericationView(),
       },
     ),
   );
@@ -106,7 +107,7 @@ class _MyNoteState extends State<MyNote> {
         ],
         title: const Text('Main UI'),
       ),
-      body: const Text('Hello World'),
+      body: const Text('You are welcome'),
     );
   }
 }
